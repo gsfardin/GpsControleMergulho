@@ -27,11 +27,6 @@ public class GpsMergulhador {
 		return peixes;
 	}
 	
-//	LISTA NÃO DEVE SER ALTERADA POR MÉTODO
-//	public void setPeixes(List<GpsPeixe> peixes) {
-//		this.peixes = peixes;
-//	}
-	
 	public void addPeixes(GpsPeixe peixe) {
 		peixes.add(peixe);
 	}

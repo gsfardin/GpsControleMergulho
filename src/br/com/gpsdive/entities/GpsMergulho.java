@@ -127,10 +127,6 @@ public class GpsMergulho {
 	List<GpsMergulhador> getMergulhadores() {
 		return mergulhadores;
 	}
-
-//	void setMergulhadores(List<GpsMergulhador> mergulhadores) {
-//		this.mergulhadores = mergulhadores;
-//	}
 	
 	public void addMergulhador(GpsMergulhador mergulhador) {
 		mergulhadores.add(mergulhador);
@@ -142,9 +138,32 @@ public class GpsMergulho {
 
 	@Override
 	public String toString() {
-		return "GpsMergulho [data=" + data + ", visibilidade=" + visibilidade + ", temperatura=" + temperatura
-				+ ", horaInicial=" + horaInicial + ", horaFinal=" + horaFinal + ", lua=" + lua + ", direcaoVento="
-				+ direcaoVento + ", direcaoCorrenteza=" + direcaoCorrenteza + ", condicaoMar=" + condicaoMar
-				+ ", local=" + local + ", mergulhadores=" + mergulhadores + "]";
+		
+//		Flag para controle de mergulho zerado = mergulho inválido para contagem de pontos.
+		boolean mergulhoZerado = true; 
+		
+//		Verifica se foram lançados 3 ou mais mergulhadores da equipe
+		if(mergulhadores.size() >= 3) 	{
+			
+//			Verifica se há algum peixe lançado *** FALTA VERIFICAR SE HÁ PELO MENOS UM COM 1000g OU MAIS ***
+			for(GpsMergulhador c : mergulhadores) {
+				if(c.peixes.size() != 0) {
+					mergulhoZerado = false;
+				}
+			}
+		
+			if(mergulhoZerado) {
+				return "Mergulho inválido: nenhuma captura válida realizada!";
+			}
+			else {
+				return "GpsMergulho [data=" + data + ", visibilidade=" + visibilidade + ", temperatura=" + temperatura
+						+ ", horaInicial=" + horaInicial + ", horaFinal=" + horaFinal + ", lua=" + lua + ", direcaoVento="
+						+ direcaoVento + ", direcaoCorrenteza=" + direcaoCorrenteza + ", condicaoMar=" + condicaoMar
+						+ ", local=" + local + ", mergulhadores=" + mergulhadores + "]";
+			}
+		}
+		else {
+			return "Mergulho não é valido! Quantidade de mergulhadores insuficiente.";
+		}
 	}
 }
