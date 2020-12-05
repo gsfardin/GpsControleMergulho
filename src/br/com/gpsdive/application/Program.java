@@ -47,7 +47,7 @@ public class Program {
 		GpsPessoa pessoa = new GpsPessoa("Dentinho", new SimpleDateFormat("dd/MM/yyyy").parse("13/02/1981"));
 		GpsMergulhador mergulhador = new GpsMergulhador(pessoa);
 		
-		mergulhador.addPeixes(new GpsPeixe("Budião", 1.350, 100));
+		mergulhador.addPeixes(new GpsPeixe("Budião", 1.330, 100));
 		mergulhador.addPeixes(new GpsPeixe("Sarda", 1.100, 100));
 		mergulhador.addPeixes(new GpsPeixe("Parú", 1.830, 100));
 		mergulhador.addPeixes(new GpsPeixe("Sioba", 3.000, 100));
